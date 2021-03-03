@@ -1,0 +1,16 @@
+routes:
+  - route: "/"
+    target: /app/test
+  - route: /test
+    target: /app/test
+  - route: /page2
+    target: /app/page2
+
+naviLeft:
+  - text: Test
+    index: 0
+    href: "/test"
+
+  - text: Page 2
+    index: 0
+    href: "/page2"

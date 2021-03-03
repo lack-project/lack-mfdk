@@ -1,0 +1,46 @@
+{
+    "name": "lack/mfdk",
+    "type": "library",
+    "description": "CoreUI UiKit",
+    "keywords": ["Router", "Dependency Injection", "Di"],
+    "homepage": "https://infracamp.org",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matthias Leuffen",
+            "email": "matthes@leuffen.de"
+        }
+    ],
+    "require": {
+        "brace/core": "*",
+        "brace/mod-router": "*",
+        "brace/mod-assets": "*",
+        "brace/uikit-base": "*",
+        "brace/uikit-coreui": "*",
+        "phore/hydrator": "*",
+        "phore/filesystem": "*",
+        "phore/http-client": "*"
+    },
+
+    "require-dev": {
+        "phore/tester": "*",
+        "erusev/parsedown-extra": "^0.8.1",
+        "brace/mod-request-laminas": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Lack\\Mfdk\\": "src"
+        },
+        "files": [
+        ]
+    },
+    "autoload-dev": {
+        "psr-4": {
+        }
+    },
+    "minimum-stability": "dev",
+    "extra": {
+        "branch-alias": {
+        }
+    }
+}

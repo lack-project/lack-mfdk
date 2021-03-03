@@ -1,0 +1,12 @@
+<html>
+<body>
+<b>Test.html</b>
+<button onclick="parent.postMessage('hilla', '*')">Click me</button>
+
+<script>
+    window.addEventListener("message", (event) => {
+        console.log("child", event);
+    });
+</script>
+</body>
+</html>
