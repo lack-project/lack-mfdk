@@ -7,13 +7,18 @@ namespace Lack\Mfdk\Type;
 class T_Manifest_Route
 {
     /**
-     * @var string
+     * @var string|null
      */
-    public $route;
+    public $route = null;
 
     /**
      * @var string
      */
     public $target;
+
+    /**
+     * @var string[]
+     */
+    public $files = [];
 
 }

@@ -1,10 +1,22 @@
-routes:
+public_routes:
   - route: "/"
-    target: /app/test
+    target: /app/start
+
   - route: /test
     target: /app/test
+    files:
+      - "page/test.html"
+
   - route: /page2
     target: /app/page2
+    files:
+      - "page/page2.html"
+
+private_routes:
+  - target: /app/modal
+    files:
+      - "page/modal.html"
+
 
 naviLeft:
   - text: Test

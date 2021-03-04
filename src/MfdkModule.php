@@ -32,7 +32,8 @@ class MfdkModule implements BraceModule
 {
 
     public function __construct(
-        private ?string $appConfigFile = null
+        private ?string $appConfigFile = null,
+        private ?string $localManifestFile = null
     ){}
 
     public function register(BraceApp $app)
@@ -61,7 +62,7 @@ class MfdkModule implements BraceModule
             ];
             foreach ($manifests as $manifest) {
                 assert($manifest instanceof T_Manifest);
-                foreach ($manifest->routes as $curRoute) {
+                foreach ($manifest->public_routes as $curRoute) {
                     $route = [
                         "route" => $curRoute->route,
                         "target" => $manifest->baseUrl . $curRoute->target
@@ -114,6 +115,29 @@ class MfdkModule implements BraceModule
                 }
             }
         ]);
+
+        if ($this->localManifestFile !== null) {
+            $manifest = phore_hydrate(phore_file($this->localManifestFile)->get_yaml(), T_Manifest::class);
+            assert ($manifest instanceof T_Manifest);
+
+            $dirname = phore_file($this->localManifestFile)->getDirname();
+
+            foreach ($manifest->public_routes as $route) {
+                $page = CoreUiPage::createEmptyPage();
+                foreach ($route->files as $file)
+                    $page->loadHtml($dirname->withRelativePath($file));
+
+                $app->router->on("GET@{$route->target}", fn() => $page);
+            }
+
+            foreach ($manifest->private_routes as $route) {
+                $page = CoreUiPage::createEmptyPage();
+                foreach ($route->files as $file)
+                    $page->loadHtml($dirname->withRelativePath($file));
+                $app->router->on("GET@{$route->target}", fn() => $page);
+            }
+        }
+
 
     }
 }

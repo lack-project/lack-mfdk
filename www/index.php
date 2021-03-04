@@ -10,10 +10,10 @@ use Lack\Mfdk\MfdkModule;
 require __DIR__ . "/../vendor/autoload.php";
 
 $app = new BraceApp();
-$app->addModule(new MfdkModule(__DIR__ . "/app-config.yaml"));
+$app->addModule(new MfdkModule(
+    __DIR__ . "/app-config.yaml",
+    __DIR__ . "/manifest.yaml"
+));
 
-$app->router->on("GET@/app/test", fn() => CoreUiPage::createEmptyPage()->loadHtml(__DIR__ . "/page/test.html"));
-$app->router->on("GET@/app/page2", fn() => CoreUiPage::createEmptyPage()->loadHtml(__DIR__ . "/page/page2.html"));
-$app->router->on("GET@/app/modal", fn() => CoreUiPage::createEmptyPage()->loadHtml(__DIR__ . "/page/modal.html"));
 
 $app->run();

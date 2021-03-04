@@ -7,7 +7,7 @@
                     <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
                 </div>
             </figure>
-            <iframe style="" src=""></iframe>
+            <iframe style="border-radius: inherit;border: none;" frameborder="0" src=""></iframe>
         </div>
     </div>
 </div>

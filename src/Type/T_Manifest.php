@@ -15,8 +15,13 @@ class T_Manifest
     /**
      * @var T_Manifest_Route[]
      */
-    public $routes = [];
+    public $public_routes = [];
 
+
+    /**
+     * @var T_Manifest_Route[]
+     */
+    public $private_routes = [];
 
     /**
      * @var T_Manifest_Nav[]
