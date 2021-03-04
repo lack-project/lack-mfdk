@@ -1,15 +1,17 @@
 
 
 <iframe id="icontent" style="visibility: hidden">
-    Loading...
 </iframe>
 
-<button onclick="document.getElementById('icontent').contentWindow.postMessage('main1', '*')">Click me</button>
+
 <style>
    iframe {
-        border: none;
+
         width: 100%;
        background-color: transparent;
+       border: 0px none transparent;
+       padding: 0px;
+       overflow: hidden;
     }
 </style>
 <script>
