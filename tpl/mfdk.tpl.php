@@ -1,14 +1,15 @@
 
 
-<iframe id="icontent" src="">
+<iframe id="icontent" style="visibility: hidden">
     Loading...
 </iframe>
 
 <button onclick="document.getElementById('icontent').contentWindow.postMessage('main1', '*')">Click me</button>
 <style>
    iframe {
-        border: 1px;
+        border: none;
         width: 100%;
+       background-color: transparent;
     }
 </style>
 <script>
@@ -17,6 +18,9 @@
 
     let icontent = document.getElementById("icontent");
     icontent.onload = () => {
+        window.setTimeout(() => {
+            icontent.style.height = icontent.contentWindow.document.body.scrollHeight + 10 + "px";
+        }, 500);
         icontent.style.height = icontent.contentWindow.document.body.scrollHeight + 10 + "px";
         icontent.style.visibility = "visible";
     }
@@ -67,8 +71,21 @@
 
     window.addEventListener("message", (event) => {
         let data = event.data;
+        if (typeof data !== "object")
+            return;
 
-        console.log("main", event);
+        switch(data.type) {
+            case "route":
+                window.history.pushState(null, data.path, data.path);
+                break;
+            case "broadcast":
+                for (let iframe of document.getElementsByTagName("iframe")) {
+                    iframe.postMessage(data, "*");
+                }
+                break;
+        }
     });
 
 </script>
+
+<?php echo file_get_contents(__DIR__ . "/_inc_modal.php"); ?>

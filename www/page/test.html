@@ -1,8 +1,9 @@
 <html>
 <body>
 <b>Test.html</b>
-<button onclick="parent.postMessage('hilla', '*')">Click me</button>
+<button onclick="MF.modalOpen('/app/modal')">Click me</button>
 
+This is a <a href="" onclick="MF.route('/page2')">link to page2</a>
 <script>
     window.addEventListener("message", (event) => {
         console.log("child", event);

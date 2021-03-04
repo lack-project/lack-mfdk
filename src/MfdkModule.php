@@ -77,8 +77,11 @@ class MfdkModule implements BraceModule
         $app->addModule(new AssetsModule());
         $app->addModule(new CoreUiModule());
 
+        $app->assets->virtual("/assets/js/plugins.js")->addFile(__DIR__ . "/../lib-js/mf.js");
+
         $app->define("coreUiConfig", new DiService(function (array $manifests) {
             $cuic = new CoreUiConfig();
+
             foreach ($manifests as $manifest) {
                 assert($manifest instanceof T_Manifest);
                 foreach ($manifest->naviLeft as $nav)
