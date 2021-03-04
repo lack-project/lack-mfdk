@@ -15,6 +15,7 @@
         "brace/core": "*",
         "brace/mod-router": "*",
         "brace/mod-assets": "*",
+        "brace/mod-cors": "*",
         "brace/uikit-base": "*",
         "brace/uikit-coreui": "*",
         "phore/hydrator": "*",

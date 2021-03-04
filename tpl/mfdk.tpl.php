@@ -23,6 +23,18 @@
                         iframe.postMessage(data, "*");
                     }
                     break;
+
+                case "adjust_frame_height":
+                    console.log("adjust height: ", event);
+                    for (let iframe of document.getElementsByTagName("iframe")) {
+                        let origin = event.origin;
+                        if (origin === "null") {
+                            origin = "";
+                        }
+                        if (origin + decodeURI(event.data.path) === iframe.getAttribute("src")) {
+                            iframe.style.height = data.height + "px";
+                        }
+                    }
             }
         });
     })();

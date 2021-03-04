@@ -32,6 +32,21 @@ class MF {
         this.message({type: "broadcast", name: name, data: data});
     }
 
+    static adjust_frame_height(height) {
+        this.message({type: "adjust_frame_height", height: height, path: location.pathname + location.hash});
+    }
+
 }
+
+(() => {
+    let curHeight = 0;
+    window.setInterval(() => {
+        if (document.body.scrollHeight === curHeight)
+            return;
+        curHeight = document.body.scrollHeight;
+        MF.adjust_frame_height(curHeight);
+    }, 100)
+})();
+
 
 

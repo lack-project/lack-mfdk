@@ -7,7 +7,7 @@
                     <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
                 </div>
             </figure>
-            <iframe style="border-radius: inherit;border: none;" frameborder="0" src=""></iframe>
+            <iframe style="border-radius: inherit;border: none;" frameborder="0" src="" sandbox="allow-scripts"></iframe>
         </div>
     </div>
 </div>
@@ -25,7 +25,6 @@
 
             iframe2.onload = (e) => {
                 iframe2.hidden = false;
-                iframe2.style.height = iframe2.contentWindow.document.body.scrollHeight + "px"
                 loader.hidden = true;
             }
 
@@ -36,9 +35,6 @@
                 modalDiv.addEventListener("hide.coreui.modal", () => {
                     iframe2.setAttribute("src", "");
                 });
-                window.setInterval(() => {
-                    iframe2.style.height = iframe2.contentWindow.document.body.scrollHeight + "px"
-                }, 300);
             }
             modal.show();
         }

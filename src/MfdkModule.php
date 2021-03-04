@@ -12,6 +12,7 @@ use Brace\Core\Base\JsonReturnFormatter;
 use Brace\Core\Base\NotFoundMiddleware;
 use Brace\Core\BraceApp;
 use Brace\Core\BraceModule;
+use Brace\CORS\CorsMiddleware;
 use Brace\Mod\Request\Zend\BraceRequestLaminasModule;
 use Brace\Router\RouterDispatchMiddleware;
 use Brace\Router\RouterEvalMiddleware;
@@ -99,6 +100,10 @@ class MfdkModule implements BraceModule
 
         $app->setPipe([
             new ExceptionHandlerMiddleware(),
+            new CorsMiddleware(allowOrigins: [
+                    "http://localhost" => [],
+                    "http://192.168.178.20" => []
+                ]),
             new AssetsMiddleware(["/assets/"]),
             new RouterEvalMiddleware(),
             new RouterDispatchMiddleware([

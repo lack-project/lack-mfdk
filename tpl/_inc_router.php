@@ -4,7 +4,7 @@
         <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
     </div>
 </figure>
-<iframe id="icontent" hidden>
+<iframe id="icontent" hidden sandbox="allow-scripts">
 </iframe>
 
 
@@ -24,14 +24,9 @@
         let ifContent = document.getElementById("icontent");
         let ifLoader = document.getElementById("iloader");
 
-        window.setInterval(() => {
-            ifContent.style.height = ifContent.contentWindow.document.body.scrollHeight + 10 + "px";
-        }, 500);
         ifContent.onload = () => {
             ifContent.hidden = false;
             ifLoader.hidden = true;
-            ifContent.style.height = ifContent.contentWindow.document.body.scrollHeight + 10 + "px";
-
         }
 
         let getFragment = () => {
