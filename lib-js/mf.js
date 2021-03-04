@@ -2,12 +2,21 @@
 
 class MF {
 
+    static getOptions()
+    {
+        let match = window.location.href.match(/#(.*)$/);
+        let fragment = match[1] ? match[1] : '';
+        return JSON.parse(decodeURIComponent(fragment));
+    }
+
     static message(message)
     {
         parent.postMessage(message, "*");
     }
 
-    static modalOpen(src) {
+    static modalOpen(src, params) {
+        if (typeof params !== "undefined")
+            src += '#' + JSON.stringify(params);
         this.message({type: "modal_open", src: src});
     }
 
