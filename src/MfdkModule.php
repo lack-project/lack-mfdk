@@ -141,6 +141,7 @@ class MfdkModule implements BraceModule
                     $page->loadHtml($dirname->withRelativePath($file));
                 $app->router->on("GET@{$route->target}", fn() => $page);
             }
+
         }
 
 

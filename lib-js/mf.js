@@ -35,7 +35,6 @@ class MF {
     static adjust_frame_height(height) {
         this.message({type: "adjust_frame_height", height: height, path: location.pathname + location.hash});
     }
-
 }
 
 (() => {
